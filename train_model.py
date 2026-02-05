@@ -12,7 +12,7 @@ from ml.model import (
     save_model,
     train_model,
 )
-project_path = "/mnt/Sata1/WGU_Documents/Term5/D501/Deploying-a-Scalable-ML-Pipeline-with-FastAPI"
+project_path = os.getcwd()
 data_path = os.path.join(project_path, "data", "census.csv")
 print(data_path)
 data = pd.read_csv(data_path)

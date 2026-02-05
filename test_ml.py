@@ -22,7 +22,8 @@ def test_data_shape():
     # asserts that the census.csv file the model is trained on is the correct shape
     """
     correct_shape = (32561, 15)
-    data_path = "/mnt/Sata1/WGU_Documents/Term5/D501/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/data/census.csv"
+    project_path = os.getcwd()
+    data_path = os.path.join(project_path, "data", "census.csv")
     data = pd.read_csv(data_path)
     assert data.shape == correct_shape
 
