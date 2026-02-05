@@ -1,28 +1,43 @@
 import pytest
-# TODO: add necessary import
+import numpy as np
+import pandas as pd
+import os
+from sklearn.datasets import make_classification
+from sklearn.ensemble import RandomForestClassifier
+from ml.model import train_model
+from train_model import cat_features
 
-# TODO: implement the first test. Change the function name and input as needed
-def test_one():
+def test_model_type():
     """
-    # add description for the first test
+    # asserts that the model is a random forest classifier
     """
-    # Your code here
-    pass
-
-
-# TODO: implement the second test. Change the function name and input as needed
-def test_two():
-    """
-    # add description for the second test
-    """
-    # Your code here
-    pass
+    
+    X_train, y_train = make_classification(random_state=67)
+    model = train_model(X_train, y_train)
+    assert isinstance(model, RandomForestClassifier)
 
 
-# TODO: implement the third test. Change the function name and input as needed
-def test_three():
+def test_data_shape():
     """
-    # add description for the third test
+    # asserts that the census.csv file the model is trained on is the correct shape
     """
-    # Your code here
-    pass
+    correct_shape = (32561, 15)
+    data_path = "/mnt/Sata1/WGU_Documents/Term5/D501/Deploying-a-Scalable-ML-Pipeline-with-FastAPI/data/census.csv"
+    data = pd.read_csv(data_path)
+    assert data.shape == correct_shape
+
+def test_cat_features():
+    """
+    # asserts that the cat_features variable from the train_model.py file has not been modified
+    """
+    cat_features_check = [
+    "workclass",
+    "education",
+    "marital-status",
+    "occupation",
+    "relationship",
+    "race",
+    "sex",
+    "native-country",
+    ]
+    assert cat_features_check == cat_features

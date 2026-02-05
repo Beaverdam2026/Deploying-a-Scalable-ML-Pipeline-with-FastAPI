@@ -4,7 +4,6 @@ from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import OneHotEncoder
 
-# Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
     """
     Trains a machine learning model and returns it.
@@ -22,7 +21,6 @@ def train_model(X_train, y_train):
     """
     model = RandomForestClassifier()
     model.fit(X_train, y_train)
-    #TODO: figure out settings for model
     return model
 
 
